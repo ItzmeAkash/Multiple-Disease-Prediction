@@ -180,41 +180,40 @@ if (selected=='Parkinson Prediction'):
         
     with col1:#
         mdvpshimmerdb=st.text_input('ShimmerDB')
+    with col2:
+        shimmerapq=st.text_input('ShimmerAPQ')
+    with col3:
+        shimmerapq5=st.text_input('ShimmerAPQ5')
         
-    with col2:#
+    with col1:#
         mdvpapq=st.text_input('Measures of APQ')
         
-    with col3:#
+    with col2:#
         ShimmerDDA=st.text_input('ShimmerDDA')     
         
-    with col1:#
+    with col3:#
          Nhr=st.text_input('Measures of NHR')
     
-    with col2:#
+    with col1:#
         Hnr=st.text_input('Measures of HNR')
     
-    with col3:#
+    with col2:#
         Rpde=st.text_input('Dynamical Complexity measures')
         
-    with col1:#
+    with col3:#
         Dfa=st.text_input('Signal fractal scaling exponent')
         
-    with col2:#
+    with col1:#
         spread1=st.text_input('Spread Fundamental')
         
-    with col3:#
+    with col2:#
         spread2=st.text_input('Spread Frequency')
     
-    with col1:
-        d2=st.text_input('D2 Measure')
-    with col2:
-        ppe=st.text_input('PPE')
     with col3:
-        text1=st.text_input('text1')
+        d2=st.text_input('D2 Measure')
     with col1:
-        text2=st.text_input('text2')
-    with col2:
-        text3=st.text_input('text3')
+        ppe=st.text_input('PPE')
+
         
         
         
@@ -222,11 +221,11 @@ if (selected=='Parkinson Prediction'):
         
         parkinson_result=''
         
-        if st.button('Parkinson Result'):
+        if st.button('Parkinson Test Result'):
             
             input_data=([[Mdvpfohz,Mdvpfhihz,mdvpflohz,mdvpjitter,mdvpjitterabs,mdvprap,
-                          mdvpppq,jitterddp,mdvpshimmer,mdvpshimmerdb,mdvpapq,ShimmerDDA,
-                          Nhr,Hnr,Dfa,spread1,spread2,d2,ppe,text1,text2,text3]])
+                          mdvpppq,jitterddp,mdvpshimmer,mdvpshimmerdb,shimmerapq,shimmerapq5,mdvpapq,ShimmerDDA,
+                          Nhr,Hnr,Rpde,Dfa,spread1,spread2,d2,ppe]])
             
             #Convert into array
             
@@ -243,5 +242,6 @@ if (selected=='Parkinson Prediction'):
                 parkinson_result='This Person has parkinson disease'
             else:
                 parkinson_result='This Person does not have parkinson disease'
+        
         st.success(parkinson_result)
                 
