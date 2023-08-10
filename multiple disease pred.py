@@ -172,7 +172,8 @@ if (selected=='Parkinson Prediction'):
         mdvprap=st.text_input('Rap')
     
     with col1:
-        mdvpppq=st.text_input('Ppq') #
+        mdvpppq=st.text_input('Ppq') 
+        
     with col2:
         jitterddp=st.text_input('Ddp') #
     with col3:
@@ -219,29 +220,29 @@ if (selected=='Parkinson Prediction'):
         
         # Code for predication
         
-        parkinson_result=''
+    parkinson_result=''
+    
+    if st.button('Parkinson Test Result'):
         
-        if st.button('Parkinson Test Result'):
-            
-            input_data=([[Mdvpfohz,Mdvpfhihz,mdvpflohz,mdvpjitter,mdvpjitterabs,mdvprap,
-                          mdvpppq,jitterddp,mdvpshimmer,mdvpshimmerdb,shimmerapq,shimmerapq5,mdvpapq,ShimmerDDA,
-                          Nhr,Hnr,Rpde,Dfa,spread1,spread2,d2,ppe]])
-            
-            #Convert into array
-            
-            input_parkinson_array=np.asarray(input_data).reshape(1,-1)
-            
-            #Convert into scaler
-            
-            input_scaler=parkinson_scaler.fit_transform(input_parkinson_array)
-            
-            
-            predication_parkinson=parkinson_model.predict(input_scaler)
-            
-            if predication_parkinson[0]==1:
-                parkinson_result='This Person has parkinson disease'
-            else:
-                parkinson_result='This Person does not have parkinson disease'
+        input_data=([[Mdvpfohz,Mdvpfhihz,mdvpflohz,mdvpjitter,mdvpjitterabs,mdvprap,mdvpppq,jitterddp,mdvpshimmer,mdvpshimmerdb,shimmerapq,shimmerapq5,mdvpapq,ShimmerDDA,Nhr,
+                        Hnr,Rpde,Dfa,spread1,spread2,d2,ppe]])
         
-        st.success(parkinson_result)
+        #Convert into array
+        
+        input_parkinson_array=np.asarray(input_data).reshape(1,-1)
+        
+        #Convert into scaler
+        
+        input_scaler=parkinson_scaler.transform(input_parkinson_array)
+        
+        
+        predication_parkinson=parkinson_model.predict(input_scaler)
+        
+        if predication_parkinson[0]==1:
+            
+            parkinson_result='This Person has parkinson disease'
+        else:
+            parkinson_result='This Person does not have parkinson disease'
+    
+    st.success(parkinson_result)
                 
